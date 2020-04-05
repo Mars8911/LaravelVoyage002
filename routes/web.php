@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+
+//首頁
+Route::get('/', [
+    'uses' => 'HomeController@home',
+    'as' => 'home'
+]);
 
 
 Route::group(['prefix' => 'admin'], function () {
