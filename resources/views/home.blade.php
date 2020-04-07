@@ -56,7 +56,7 @@
             <div class="container nav-header-container">
                 <!-- start logo -->
                 <div class="col-auto pl-lg-0">
-                    <a href="index.html" title="Pofo" class="logo"><img src="" data-rjs="" class="logo-dark" alt="雷根二手書店""><img src="" data-rjs=" images/logo-white@2x.png" alt="雷根二手書店 LOGO""
+                    <a href="/" title="" class="logo"><img src="{{Voyager::image(setting('site.logo'))}}" data-rjs="" class="logo-dark" alt=""><img src="{{Voyager::image(setting('site.logo'))}}" data-rjs=" images/logo-white@2x.png" alt="雷根二手書店 LOGO""
                                 class=" logo-light default"></a>
                 </div>
                 <!-- end logo -->
@@ -86,17 +86,20 @@
     <section class="p-0 main-slider h-100 mobile-height wow fadeIn">
         <div class="swiper-full-screen swiper-container h-100 w-100 white-move">
             <div class="swiper-wrapper">
+                @foreach( $banners as $banner )
                 <!-- start slider item -->
-                <div class="swiper-slide cover-background" style="background-image:url('https://images.unsplash.com/photo-1533285860212-c85e7140a408?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1036&q=80');">
-                    <div class="opacity-extra-medium bg-black"></div>
+
+
+                <div class="swiper-slide cover-background" style="background-image:url('{{Voyager::image($banner->image)}}');">
+                    <div class=" opacity-extra-medium bg-black"></div>
                     <div class="container position-relative full-screen">
                         <div class="slider-typography text-center">
                             <div class="slider-text-middle-main">
                                 <div class="slider-text-middle">
                                     <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom md-margin-four-bottom sm-margin-15px-bottom">
-                                        歡迎來到雷根二手書店</h6>
+                                        {{$banner->name}}</h6>
                                     <div class="alt-font text-white-2 text-uppercase font-weight-700 letter-spacing-minus-3 title-extra-large margin-two-bottom width-60 mx-auto lg-width-80 md-margin-four-bottom sm-width-90 sm-margin-25px-bottom sm-letter-spacing-0">
-                                        雷根</div>
+                                        {{$banner->descrip}}</div>
                                     <div class="btn-dual">
                                         <a href="about-us-modern.html" class="btn btn-transparent-white btn-small sm-margin-two-all">聯繫我們
                                         </a>
@@ -108,6 +111,7 @@
                     </div>
                 </div>
                 <!-- end slider item -->
+                @endforeach
             </div>
             <!-- start slider pagination -->
             <div class="swiper-pagination swiper-pagination-square swiper-pagination-white swiper-full-screen-pagination">
@@ -139,7 +143,7 @@
                             <li class="grid-item zoomIn last-paragraph-no-margin px-2">
                                 <figure>
                                     <div class="portfolio-img bg-deep-pink position-relative text-center overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1548048026-5a1a941d93d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" data-no-retina="">
+                                        <img src="/storage/{{$post->image}}" alt="" data-no-retina="">
                                         <div class="portfolio-icon">
                                             <a href="create-me.html""><i
                                                         class=" fas fa-link text-extra-dark-gray" aria-hidden="true"></i></a>
