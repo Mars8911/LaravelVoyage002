@@ -3,7 +3,7 @@
 
 <head>
     <!-- title -->
-    <title>{{setting('site.top_title')}}</title>
+    <title>{{setting('site.top_title')}}-二手書收購</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
@@ -82,93 +82,93 @@
         <!-- end navigation -->
     </header>
     <!-- end header -->
-    <!-- start slider section -->
-    <section class="p-0 main-slider h-100 mobile-height wow fadeIn">
-        <div class="swiper-full-screen swiper-container h-100 w-100 white-move">
-            <div class="swiper-wrapper">
-                @foreach( $banners as $banner )
-                <!-- start slider item -->
-
-
-                <div class="swiper-slide cover-background" style="background-image:url('{{Voyager::image($banner->image)}}');">
-                    <div class=" opacity-extra-medium bg-black"></div>
-                    <div class="container position-relative full-screen">
-                        <div class="slider-typography text-center">
-                            <div class="slider-text-middle-main">
-                                <div class="slider-text-middle">
-                                    <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom md-margin-four-bottom sm-margin-15px-bottom">
-                                        {{$banner->name}}</h6>
-                                    <div class="alt-font text-white-2 text-uppercase font-weight-700 letter-spacing-minus-3 title-extra-large margin-two-bottom width-60 mx-auto lg-width-80 md-margin-four-bottom sm-width-90 sm-margin-25px-bottom sm-letter-spacing-0">
-                                        {{$banner->descrip}}</div>
-                                    <div class="btn-dual">
-                                        <a href="/acquisition" class="btn btn-transparent-white btn-small sm-margin-two-all">聯繫我們
-                                        </a>
-                                        <a href="/content" target="_blank" class="btn btn-transparent-white btn-small sm-margin-two-all">二手書收購</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end slider item -->
-                @endforeach
-            </div>
-            <!-- start slider pagination -->
-            <div class="swiper-pagination swiper-pagination-square swiper-pagination-white swiper-full-screen-pagination">
-            </div>
-            <div class="swiper-button-next swiper-button-black-highlight d-none"></div>
-            <div class="swiper-button-prev swiper-button-black-highlight d-none"></div>
-            <!-- end slider pagination -->
-        </div>
-    </section>
-    <!-- end slider section -->
-    <!-- start feature box section -->
-
-
-    <section class="bg-light-gray wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+    @foreach($acquisitions as $acquisition)
+    <!-- start page title section -->
+    <section class="wow fadeIn parallax" data-stellar-background-ratio="0.5" style="background-image:url('{{Voyager::image($acquisition->big_image)}}');">
+        <div class="opacity-medium bg-extra-dark-gray"></div>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-xl-5 col-md-6 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
+            <div class="row align-items-center">
+                <div class="col-12 d-flex flex-column justify-content-center text-center extra-small-screen page-title-large">
 
-                    <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0 text-info">最新書籍消息</h5>
+                    <!-- start page title -->
+                    <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom">
+                        {{$acquisition->title}}
+                    </h1>
+
+                    <span class="text-white-2 opacity6 alt-font">{{$acquisition->descrip}}</span>
+                    <!-- end page title -->
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 p-0 sm-padding-15px-lr">
-                    <div class="filter-content overflow-hidden">
-                        <ul class="portfolio-grid work-3col  hover-option6 lightbox-portfolio">
-                            <li class="grid-sizer"></li>
-                            @foreach( $posts as $post )
-                            <!-- start portfolio item -->
-                            <li class="grid-item zoomIn last-paragraph-no-margin px-2">
-                                <figure>
-                                    <div class="portfolio-img bg-deep-pink position-relative text-center overflow-hidden">
-                                        <img src="/storage/{{$post->image}}" alt="" data-no-retina="">
-                                        <div class="portfolio-icon">
-                                            <a href="{{route('slug.news',$post->id)}}""><i
-                                                        class=" fas fa-link text-extra-dark-gray" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <figcaption class="bg-white">
-                                        <div class="portfolio-hover-main text-center">
-                                            <div class="portfolio-hover-box align-middle">
-                                                <div class="portfolio-hover-content position-relative">
-                                                    <a href="{{route('slug.news',$post->id)}}"><span class=" line-height-normal font-weight-600 text-small alt-font margin-5px-bottom text-extra-dark-gray text-uppercase d-block">{{$post->title}}</span></a>
+        </div>
+    </section>
+    <!-- end page title section -->
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <!-- end portfolio item -->
-                            @endforeach
-                        </ul>
+    <!-- start section -->
+    <section class="wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-4 text-center text-lg-left md-margin-30px-bottom md-padding-80px-lr sm-padding-15px-lr wow fadeIn">
+                    <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase width-80 lg-width-100">
+                        二手書收購須知</h5>
+                    <div class="separator-line-verticle-extra-small bg-extra-dark-gray width-50 md-width-70 mx-auto ml-lg-0 margin-30px-bottom md-margin-20px-bottom">
+                    </div>
+                    <p class="width-95 lg-width-100"><?= $acquisition->content; ?>
+                    </p>
+                    <a class="btn btn-small btn-dark-gray font-weight-700" href="team-simple.html">聯繫我們</a>
+                </div>
+                <div class="col-12 col-lg-4 col-md-6 sm-margin-15px-bottom wow fadeIn" data-wow-delay="0.2s">
+                    <img src="{{Voyager::image($acquisition->descrip_image1)}}" alt="" />
+                </div>
+                <div class="col-12 col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.4s">
+                    <img src="{{Voyager::image($acquisition->descrip_image2)}}" alt="" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start feature box section -->
+    <section class="p-0 wow fadeIn bg-light-gray">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-6 cover-background md-height-500px sm-height-350px wow fadeInLeft" style="background-image:url('{{Voyager::image($acquisition->subtitle_image)}}');">
+                    <div class="h-sm-400px"></div>
+                </div>
+                <div class="col-12 col-lg-6 padding-six-half-lr lg-padding-eight-lr md-padding-30px-lr padding-five-tb md-padding-nine-half-tb sm-padding-15px-lr sm-padding-50px-tb wow fadeInRight">
+                    <h5 class="alt-font text-extra-dark-gray margin-seven-half-bottom lg-margin-ten-half-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center text-lg-left md-width-70 mx-auto mx-lg-0 sm-width-100 text-uppercase font-weight-700">
+                        收購二手書注意事項</h5>
+                    <div class="row text-center text-md-left">
+                        <!-- start feature box item-->
+                        <div class="col-12 col-xl-6 col-lg-12 col-md-6 margin-six-bottom lg-no-padding-right lg-margin-30px-bottom sm-margin-30px-bottom sm-padding-15px-right last-paragraph-no-margin">
+                            <div class="text-extra-dark-gray margin-10px-bottom alt-font"><span class="text-deep-pink margin-10px-right d-block d-md-inline-block sm-no-margin">01.</span>{{$acquisition->descrip_titlev1}}</div>
+                            <p class="width-90 sm-width-100">{{$acquisition->descrip_v1}}</p>
+                        </div>
+                        <!-- end feature box item-->
+                        <!-- start feature box item-->
+                        <div class="col-12 col-xl-6 col-lg-12 col-md-6 margin-six-bottom lg-no-padding-right lg-margin-30px-bottom sm-margin-30px-bottom sm-padding-15px-right last-paragraph-no-margin">
+                            <div class="text-extra-dark-gray margin-10px-bottom alt-font"><span class="text-deep-pink margin-10px-right d-block d-md-inline-block sm-no-margin">02.</span>{{$acquisition->descrip_titlev2}}</div>
+                            <p class="width-90 sm-width-100">{{$acquisition->descrip_v2}}.</p>
+                        </div>
+                        <!-- end feature box item-->
+                        <!-- start feature box item-->
+                        <div class="col-12 col-xl-6 col-lg-12 col-md-6 lg-no-padding-right lg-margin-30px-bottom md-no-margin-bottom sm-margin-30px-bottom sm-padding-15px-right last-paragraph-no-margin">
+                            <div class="text-extra-dark-gray margin-10px-bottom alt-font"><span class="text-deep-pink margin-10px-right d-block d-md-inline-block sm-no-margin">03.</span>{{$acquisition->descrip_titlev3}}</div>
+                            <p class="width-90 sm-width-100">{{$acquisition->descrip_v3}}</p>
+                        </div>
+                        <!-- end feature box item-->
+                        <!-- start feature box item-->
+                        <div class="col-12 col-xl-6 col-lg-12 col-md-6 lg-no-padding-right lg-no-margin-bottom sm-padding-15px-right last-paragraph-no-margin">
+                            <div class="text-extra-dark-gray margin-10px-bottom alt-font"><span class="text-deep-pink margin-10px-right d-block d-md-inline-block sm-no-margin">04.</span>{{$acquisition->descrip_titlev4}}</div>
+                            <p class="width-90 sm-width-100">{{$acquisition->descrip_v4}}</p>
+                        </div>
+                        <!-- end feature box item-->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endforeach
+    <!-- end feature box section -->
     <!-- start footer -->
     <footer class="footer-standard-dark bg-extra-dark-gray">
         <div class="footer-widget-area padding-five-tb sm-padding-30px-tb">

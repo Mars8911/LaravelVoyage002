@@ -3,7 +3,7 @@
 
 <head>
     <!-- title -->
-    <title>{{setting('site.top_title')}}</title>
+    <title>{{setting('site.top_title')}}-聯繫我們</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
@@ -82,93 +82,75 @@
         <!-- end navigation -->
     </header>
     <!-- end header -->
-    <!-- start slider section -->
-    <section class="p-0 main-slider h-100 mobile-height wow fadeIn">
-        <div class="swiper-full-screen swiper-container h-100 w-100 white-move">
-            <div class="swiper-wrapper">
-                @foreach( $banners as $banner )
-                <!-- start slider item -->
-
-
-                <div class="swiper-slide cover-background" style="background-image:url('{{Voyager::image($banner->image)}}');">
-                    <div class=" opacity-extra-medium bg-black"></div>
-                    <div class="container position-relative full-screen">
-                        <div class="slider-typography text-center">
-                            <div class="slider-text-middle-main">
-                                <div class="slider-text-middle">
-                                    <h6 class="text-very-light-gray padding-ten-lr font-weight-300 margin-two-bottom md-margin-four-bottom sm-margin-15px-bottom">
-                                        {{$banner->name}}</h6>
-                                    <div class="alt-font text-white-2 text-uppercase font-weight-700 letter-spacing-minus-3 title-extra-large margin-two-bottom width-60 mx-auto lg-width-80 md-margin-four-bottom sm-width-90 sm-margin-25px-bottom sm-letter-spacing-0">
-                                        {{$banner->descrip}}</div>
-                                    <div class="btn-dual">
-                                        <a href="/acquisition" class="btn btn-transparent-white btn-small sm-margin-two-all">聯繫我們
-                                        </a>
-                                        <a href="/content" target="_blank" class="btn btn-transparent-white btn-small sm-margin-two-all">二手書收購</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end slider item -->
-                @endforeach
-            </div>
-            <!-- start slider pagination -->
-            <div class="swiper-pagination swiper-pagination-square swiper-pagination-white swiper-full-screen-pagination">
-            </div>
-            <div class="swiper-button-next swiper-button-black-highlight d-none"></div>
-            <div class="swiper-button-prev swiper-button-black-highlight d-none"></div>
-            <!-- end slider pagination -->
-        </div>
-    </section>
-    <!-- end slider section -->
-    <!-- start feature box section -->
-
-
-    <section class="bg-light-gray wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+    @foreach($contents as $content )
+    <!-- start help section -->
+    <section class="wow fadeIn big-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-xl-5 col-md-6 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
+                <div class="col-12 col-lg-8 text-center">
 
-                    <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0 text-info">最新書籍消息</h5>
+                    <h2 class="alt-font font-weight-700 letter-spacing-minus-1 text-extra-dark-gray text-info">
+                        {{$content->banner_ttitle}}
+                    </h2>
+                    <p class="width-75 mx-auto sm-width-100 text-justify">
+                        {{$content->banner_description}}</p>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- end help section -->
+    <!-- start contact section -->
+    <section class="no-padding bg-extra-dark-gray">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 p-0 sm-padding-15px-lr">
-                    <div class="filter-content overflow-hidden">
-                        <ul class="portfolio-grid work-3col  hover-option6 lightbox-portfolio">
-                            <li class="grid-sizer"></li>
-                            @foreach( $posts as $post )
-                            <!-- start portfolio item -->
-                            <li class="grid-item zoomIn last-paragraph-no-margin px-2">
-                                <figure>
-                                    <div class="portfolio-img bg-deep-pink position-relative text-center overflow-hidden">
-                                        <img src="/storage/{{$post->image}}" alt="" data-no-retina="">
-                                        <div class="portfolio-icon">
-                                            <a href="{{route('slug.news',$post->id)}}""><i
-                                                        class=" fas fa-link text-extra-dark-gray" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <figcaption class="bg-white">
-                                        <div class="portfolio-hover-main text-center">
-                                            <div class="portfolio-hover-box align-middle">
-                                                <div class="portfolio-hover-content position-relative">
-                                                    <a href="{{route('slug.news',$post->id)}}"><span class=" line-height-normal font-weight-600 text-small alt-font margin-5px-bottom text-extra-dark-gray text-uppercase d-block">{{$post->title}}</span></a>
+                <div class="col-12 col-lg-6 p-0 cover-background md-height-450px sm-height-350px wow fadeInLeft" style="background: url('{{Voyager::image($content->vice_image)}}')">
+                </div>
+                <div class="col-12 col-lg-6 p-0 wow fadeInRight">
+                    <div class="row m-0">
+                        <!-- start contact item -->
+                        <div class="col-12 col-md-6 bg-extra-dark-gray d-flex flex-column justify-content-center align-items-center text-center height-350px last-paragraph-no-margin">
+                            <i class="icon-map text-deep-pink icon-medium margin-25px-bottom"></i>
+                            <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">
+                                公司地址</div>
+                            <p class="width-60 lg-width-80 mx-auto text-medium text-justify text-white">
+                                {{$content->office_map}}</p>
+                        </div>
+                        <!-- end contact item -->
+                        <!-- start contact item -->
+                        <div class="col-12 col-md-6 bg-black d-flex flex-column justify-content-center align-items-center text-center height-350px last-paragraph-no-margin">
+                            <i class="icon-chat text-deep-pink icon-medium margin-25px-bottom"></i>
+                            <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">
+                                聯繫方式</div>
+                            <p class="mx-auto text-medium mb-0 text-white">電話: {{$content->office_tel}}</p>
+                            <p class="mx-auto text-medium text-white">傳真: {{$content->office_fax}}</p>
+                        </div>
+                        <!-- end contact item -->
+                        <!-- start contact item -->
+                        <div class="col-12 col-md-6 bg-black d-flex flex-column justify-content-center align-items-center text-center height-350px last-paragraph-no-margin">
+                            <i class="icon-envelope text-deep-pink icon-medium margin-25px-bottom"></i>
+                            <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">
+                                聯繫信箱</div>
+                            <p class="mx-auto text-medium mb-0 text-white"><a href="mailto:{{$content->office_email}}" class="text-white">{{$content->office_email}}</a>
+                            </p>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <!-- end portfolio item -->
-                            @endforeach
-                        </ul>
+                        </div>
+                        <!-- end contact item -->
+                        <!-- start contact item -->
+                        <div class="col-12 col-md-6 bg-extra-dark-gray d-flex flex-column justify-content-center align-items-center text-center height-350px last-paragraph-no-margin">
+                            <i class="icon-clock text-deep-pink icon-medium margin-25px-bottom"></i>
+                            <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">
+                                營業時間</div>
+                            <p class="mx-auto text-medium mb-0 text-white">{{$content->office_week}}</p>
+                            <p class="mx-auto text-medium text-white">{{$content->office_title}}</p>
+                        </div>
+                        <!-- end contact item -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- end contact section -->
+    @endforeach
     <!-- start footer -->
     <footer class="footer-standard-dark bg-extra-dark-gray">
         <div class="footer-widget-area padding-five-tb sm-padding-30px-tb">
