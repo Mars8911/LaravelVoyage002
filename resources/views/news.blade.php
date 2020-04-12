@@ -125,16 +125,8 @@
                     <!-- start pagination -->
                     <div class="col-12 text-center margin-100px-top md-margin-50px-top position-relative wow fadeInUp">
                         <div class="pagination text-small text-uppercase text-extra-dark-gray">
-                            <ul class="mx-auto">
-                                {{$posts->links()}}
-                                <li><a href="#"><i class="fas fa-long-arrow-alt-left margin-5px-right d-none d-md-inline-block"></i>
-                                        Prev</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">Next <i class="fas fa-long-arrow-alt-right margin-5px-left d-none d-md-inline-block"></i></a>
-                                </li>
-                            </ul>
+                            {{$posts->links()}}
+
                         </div>
                     </div>
                     <!-- end pagination -->
